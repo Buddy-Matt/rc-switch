@@ -92,6 +92,8 @@ class RCSwitch {
     unsigned int getReceivedDelay();
     unsigned int getReceivedProtocol();
     unsigned int* getReceivedRawdata();
+
+    static void handleInterrupt();
     #endif
   
     void enableTransmit(int nTransmitterPin);
@@ -156,7 +158,6 @@ class RCSwitch {
     void transmit(HighLow pulses);
 
     #if not defined( RCSwitchDisableReceiving )
-    static void handleInterrupt();
     static bool receiveProtocol(const int p, unsigned int changeCount);
     int nReceiverInterrupt;
     #endif
